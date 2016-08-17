@@ -52,5 +52,17 @@ class ConversorDeNumeroRomanoTest < Minitest::Test
     assert_equal 2, numero
   end
 
+  def test_deve_entender_dois_numeros_dois_a_dois_como_XX
+    romano = ConversorDeNumeroRomano.new
+    numero = romano.converte 'XX'
+    assert_equal 20, numero
+  end
+
+  def test_deve_entender_numeros_como_IX
+    romano = ConversorDeNumeroRomano.new
+    numero = romano.converte 'IX'
+    assert_equal 9, numero
+  end
+
 
 end
