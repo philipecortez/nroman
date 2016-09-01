@@ -12,9 +12,23 @@ class ConversorDeNumeroRomano
     }.freeze
   
   def converte(numero_em_romano)
+    acumulador = 0
+    ultimo_vizinho_da_direita = 0
+
 
     numero_em_romano.
     split('').
-    inject(0) {|acc, n| acc + TABELA[n]}
+    reverse.
+    each do |n|
+      atual = TABELA[n]
+
+      multiplicador = 1
+      multiplicador = -1 if atual < ultimo_vizinho_da_direita
+      
+      acumulador += atual * multiplicador
+      ultimo_vizinho_da_direita = atual
+    end
+    
+    acumulador
   end
 end
